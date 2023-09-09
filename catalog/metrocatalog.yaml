@@ -39,7 +39,6 @@ Catalog:
     BillReport:
       PackageName: BillReport-Setup.exe
       Environments:
-        prod: '\\pwinappn1088\DropBox\Metropolis\System\Main\BillReport\BillReport_20201204.1'
         dev:
           artifactName: BillReport_20230909.3
           tag: main-BillReport_20230909.3
@@ -56,6 +55,10 @@ Catalog:
           artifactName: BillReport_20230909.3
           tag: main-BillReport_20230909.3
           repo: https://github.com/coheea/metro-report
+        prod:
+          repo: https://github.com/coheea/metro-report
+          artifactName: BillReport_20230909.3
+          tag: main-BillReport_20230909.3
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -126,7 +129,6 @@ Catalog:
     Draw:
       PackageName: draw-setup.exe
       Environments:
-        prod: '\\pwinappn1088\DropBox\Metropolis\System\Main\Draw\Draw_20201222.1'
         dev:
           tag: main-Draw_20230909.7
           artifactName: Draw_20230909.7
@@ -143,6 +145,10 @@ Catalog:
           artifactName: Draw_20230909.6
           tag: main-Draw_20230909.6
           repo: https://github.com/coheea/metro-member
+        prod:
+          repo: https://github.com/coheea/metro-member
+          artifactName: Draw_20230909.6
+          tag: main-Draw_20230909.6
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -163,7 +169,6 @@ Catalog:
     EpsDbUp:
       PackageName: epsdbup-setup.exe
       Environments:
-        prod: '\\pwinappn1088\dropbox\Metropolis\System\Main\EpsDbUp\EpsDbUp_20230731.1'
         test2: '\\pwinappn1088\dropbox\Metropolis\System\GSTMET-2779\EpsDbUp_GSTMET-2779\EpsDbUp_GSTMET-2779_20230803.3'
         test4: '\\pwinappn1088\dropbox\Metropolis\System\Main-Branch/GSTMET-2676\EpsDbUp_GSTMET-2676\EpsDbUp_GSTMET-2676_20230825.2'
         dev1: '\\pwinappn1088\dropbox\Metropolis\System\Main-Branch/GSTMET-2676\EpsDbUp_GSTMET-2676\EpsDbUp_GSTMET-2676_20230830.1'
@@ -183,6 +188,10 @@ Catalog:
           artifactName: EpsDbUp_20230909.4
           tag: main-EpsDbUp_20230909.4
           repo: https://github.com/ebetsystems/metro-database
+        prod:
+          repo: https://github.com/ebetsystems/metro-database
+          artifactName: EpsDbUp_20230909.4
+          tag: main-EpsDbUp_20230909.4
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -260,7 +269,6 @@ Catalog:
     Member:
       PackageName: member-setup.exe
       Environments:
-        prod: '\\pwinappn1088\dropbox\Metropolis\System\Main\Member\Member_20230728.1'
         test2: '\\pwinappn1088\dropbox\Metropolis\System\GSTMET-2779\Member_GSTMET-2779\Member_GSTMET-2779_20230803.4'
         test4: '\\pwinappn1088\dropbox\Metropolis\System\GSTMET-3334\Member_GSTMET-3334\Member_GSTMET-3334_20230817.1'
         dev:
@@ -279,6 +287,10 @@ Catalog:
           artifactName: Member_20230909.2
           tag: main-Member_20230909.2
           repo: https://github.com/ebetsystems/metro-member
+        prod:
+          repo: https://github.com/ebetsystems/metro-member
+          artifactName: Member_20230909.2
+          tag: main-Member_20230909.2
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -394,7 +406,6 @@ Catalog:
     Report:
       PackageName: report-setup.exe
       Environments:
-        prod: '\\pwinappn1088\dropbox\Metropolis\System\Main\Report\Report_20230616.2'
         test4: '\\pwinappn1088\dropbox\Metropolis\System\Main-Branch\Report_GSTMET-2676\Report_GSTMET-2676_20230829.1'
         dev1: '\\pwinappn1088\dropbox\Metropolis\System\Main-Branch\Report_GSTMET-2676\Report_GSTMET-2676_20230829.1'
         dev:
@@ -413,6 +424,10 @@ Catalog:
           artifactName: Report_20230909.2
           tag: main-Report_20230909.2
           repo: https://github.com/ebetsystems/metro-report
+        prod:
+          repo: https://github.com/ebetsystems/metro-report
+          artifactName: Report_20230909.2
+          tag: main-Report_20230909.2
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files

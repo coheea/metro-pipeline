@@ -52,6 +52,10 @@ Catalog:
           tag: main-BillReport_20230909.3
           repo: https://github.com/coheea/metro-report
           artifactName: BillReport_20230909.3
+        staging:
+          artifactName: BillReport_20230909.3
+          tag: main-BillReport_20230909.3
+          repo: https://github.com/coheea/metro-report
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -135,6 +139,10 @@ Catalog:
           tag: main-Draw_20230909.6
           repo: https://github.com/coheea/metro-member
           artifactName: Draw_20230909.6
+        staging:
+          artifactName: Draw_20230909.6
+          tag: main-Draw_20230909.6
+          repo: https://github.com/coheea/metro-member
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -171,6 +179,10 @@ Catalog:
           repo: https://github.com/ebetsystems/metro-database
           tag: main-EpsDbUp_20230909.4
           artifactName: EpsDbUp_20230909.4
+        staging:
+          artifactName: EpsDbUp_20230909.4
+          tag: main-EpsDbUp_20230909.4
+          repo: https://github.com/ebetsystems/metro-database
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -263,6 +275,10 @@ Catalog:
           repo: https://github.com/ebetsystems/metro-member
           tag: main-Member_20230909.2
           artifactName: Member_20230909.2
+        staging:
+          artifactName: Member_20230909.2
+          tag: main-Member_20230909.2
+          repo: https://github.com/ebetsystems/metro-member
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -393,6 +409,10 @@ Catalog:
           repo: https://github.com/ebetsystems/metro-report
           tag: main-Report_20230909.2
           artifactName: Report_20230909.2
+        staging:
+          artifactName: Report_20230909.2
+          tag: main-Report_20230909.2
+          repo: https://github.com/ebetsystems/metro-report
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files

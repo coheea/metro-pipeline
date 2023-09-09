@@ -163,6 +163,10 @@ Catalog:
           repo: https://github.com/ebetsystems/metro-database
           tag: main-EpsDbUp_20230909.4
           artifactName: EpsDbUp_20230909.4
+        staging:
+          artifactName: EpsDbUp_20230909.4
+          tag: main-EpsDbUp_20230909.4
+          repo: https://github.com/ebetsystems/metro-database
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -255,6 +259,10 @@ Catalog:
           repo: https://github.com/ebetsystems/metro-member
           tag: main-Member_20230909.2
           artifactName: Member_20230909.2
+        staging:
+          artifactName: Member_20230909.2
+          tag: main-Member_20230909.2
+          repo: https://github.com/ebetsystems/metro-member
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -385,6 +393,10 @@ Catalog:
           repo: https://github.com/ebetsystems/metro-report
           tag: main-Report_20230909.2
           artifactName: Report_20230909.2
+        staging:
+          artifactName: Report_20230909.2
+          tag: main-Report_20230909.2
+          repo: https://github.com/ebetsystems/metro-report
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files

@@ -1,0 +1,435 @@
+﻿---
+Version: 2.0.59.0
+Catalog:
+  Packages:
+    iac-metro-common:
+      PackageName:
+      Environments:
+        latest: '.\iac-metro-common'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder:
+    ARCGateway:
+      PackageName: ARCGateway-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\ARCGateway\ARCGateway_20221123.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    AstuteConfiguration:
+      PackageName: AstuteAPIConfigure-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\AstuteConfiguration\AstuteConfiguration_20210423.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    AstuteExporter:
+      PackageName: AstuteExporter-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\AstuteExporter\AstuteExporter_20210728.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    BFFAPI:
+      PackageName: POSOrderingBffApi-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\BffApi-Main\BffApi-Main_20221117.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    BillReport:
+      PackageName: BillReport-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\BillReport\BillReport_20201204.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    BuildStatements:
+      PackageName: BuildStatements-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Regulatory\BuildStatements\BuildStatements_20211217.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    BusinessService:
+      PackageName: BusinessServer-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\BusinessService\BusinessService_20201126.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    BusinessServiceUpdate:
+      PackageName: BusinessServer-Update.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\BusinessServiceUpdate\BusinessServiceUpdate_20221116.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    ChequeAssist:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\ChequeAssist'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\ChequeAssist
+    ConfigurationManager:
+      PackageName: config-nsw-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\ConfigurationManager\ConfigurationManager_20210226.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    ControlPanel:
+      PackageName: control-panel-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\ControlPanel\ControlPanel_20210511.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    CRTService:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\CRT Service'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\CRT Service
+    Database:
+      PackageName: metro-databases-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\Database\Database_20201210.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    DependencyPack:
+      PackageName: DependencyPack-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\DependencyPack\DependencyPack_20210423.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Draw:
+      PackageName: draw-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\Draw\Draw_20201222.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Engage:
+      PackageName: engage-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Engage\Engage_20221110.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    EngageGW:
+      PackageName: engage-gateway-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\EngageGW\EngageGW_20201204.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    EpsDbUp:
+      PackageName: epsdbup-setup.exe
+      Environments:
+        latest:  '\\pwinappn1088\dropbox\Metropolis\System\Main\EpsDbUp\EpsDbUp_20221129.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Firmware:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\Firmware'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\Firmware
+    Floor:
+      PackageName: floor-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Regulatory\Floor\Floor_20220114.3'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Game:
+      PackageName: ea-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Game\Game_20221116.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    GCE:
+      PackageName: GCESetup.msi
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\GCE\GCE_NSW_20220121.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    GPA:
+      PackageName: gpa-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\_fixedRelease\2.0.57.3\GPA\GPA-Setup_20181024.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    LegacyEngines:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\LegacyEngines'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\LegacyEngines
+    MaxApiPollingService:
+      PackageName: MaxApiPollingService-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\MaxApiPollingService\MaxApiPollingService_20220318.3'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MediaService:
+      PackageName: engage-mediasvc-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\MediaService\MediaService_20210226.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MediaStreamingService:
+      PackageName: EngageMSSetup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\MediaStreaming\MediaStreaming_20190212'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Member:
+      PackageName: member-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Member\Member_20221123.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MemDocsStorage:
+      PackageName: MemDocsStorage-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\MemDocsStorage\MemDocsStorage_20210514.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MetroAutomation:
+      PackageName: metropolis-automation-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\MetroAutomation\MetroAutomation_20221117.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MetroKiosk:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\MetroKiosk\MetroKiosk_20210714.1'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\MetroKiosk
+    MetroKioskUpdate:
+      PackageName: metro-kiosk-setup(update).exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\MetroKioskUpdate\MetroKioskUpdate_20220209.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MetroShell:
+      PackageName: MetroHub-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\MetroShell\MetroShell_20201126.3'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MetroShellUpdate:
+      PackageName: MetroHub-Update.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\MetroShellUpdate\MetroShellUpdate_20221117.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    MetroVersionComparer:
+      PackageName: MetroVersionComparer-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\MetroVersionComparer\MetroVersionComparer_20220303.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    PAS:
+      PackageName: pas-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\PAS\PAS_20210423.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Pathway NSW:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\Pathway_NSW_20200507.1'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\Pathway NSW
+    Pay:
+      PackageName: pay-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Regulatory\Pay\Pay_20220114.4'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    POSGateway:
+      PackageName: POSGateway-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\POSGateway\POSGateway_20201204.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    POSOrderingWebsite:
+      PackageName: POSOrderingWebsite-Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\POSOrderingWebsite-ClassD\POSOrderingWebsite-ClassD_20221123.2'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    PRE2:
+      PackageName: PRE2Setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\PRE2\PRE2_20221110.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    PreCommitment:
+      PackageName: vpc-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\PreCommitment\PreCommitment_20191105.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Promo:
+      PackageName: promo-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\Promo\Promo_20220209.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Report:
+      PackageName: report-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\Report\Report_20210423.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    ServiceCall:
+      PackageName: serviceCall-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\dropbox\Metropolis\System\Main\ServiceCall\ServiceCall_20221117.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    SMP:
+      PackageName: smp-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\SMP-Installer\SMP-Installer_20181119.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    UCE:
+      PackageName: uce-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\UCE\UCE_20201204.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Vault:
+      PackageName: vault-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\Vault\Vault_20210423.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    WANMessageClient:
+      PackageName: WANMsgClient-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\WANMessageClient\WANMessageClient_20201204.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    WANMessageServer:
+      PackageName: WANMsgServer-setup.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\WANMessageServer\WANMessageServer_20201204.1'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+
+    #--------------------------------------------------------
+    #External Tools
+    #--------------------------------------------------------
+    ChefClient-14_15_6:
+      PackageName: chef-client-14.15.6-1-x64.msi
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\ChefClient-14.15.6'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    PSUpdate:
+      PackageName:
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\PSUpdate'
+      LocationType: UNC
+      CopyEntireFolder: true
+      TargetFolder: setup-files\PSUpdate
+    VCRedist2008:
+      PackageName: vcredist_x86.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\VCRedist2008'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    VCRedist2012:
+      PackageName: vcredist_x86_vs2012.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\VCRedist2012'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    VCRedist2015:
+      PackageName: vcredist_x86_vs2015.exe
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\VCRedist2015'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    CrystalReports13_0_15:
+      PackageName: CRRuntime_32bit_13_0_15.msi
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\CrystalReports-13_0_15'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    CrystalReports13_0_23:
+      PackageName: CRRuntime_32bit_13_0_23.msi
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\CrystalReports-13_0_23'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    ElasticMetricbeat32:
+      PackageName: metricbeat-7.15.0-windows-x86.msi
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\elastic\metricbeat-7.15.0\32'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    ElasticMetricbeat64:
+      PackageName: metricbeat-7.15.0-windows-x86_64.msi
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\elastic\metricbeat-7.15.0\64'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files
+    Python_2_7_16:
+      PackageName: python-2.7.16.msi
+      Environments:
+        latest: '\\pwinappn1088\DropBox\Metropolis\System\Main\External\Python\Python-2.7.16'
+      LocationType: UNC
+      CopyEntireFolder: false
+      TargetFolder: setup-files

@@ -1,0 +1,140 @@
+name: Deploy Metropolis
+
+on: 
+  workflow_dispatch:
+
+env:
+  Catalog: ${{ github.workspace }}\catalog\metrocatalog.yaml
+
+permissions: write-all
+
+jobs:
+    
+  SIT-TestsPassed:
+    runs-on: windows-2019
+    if: github.ref_name == 'main'
+    outputs:
+        NEW_SHA: ${{ steps.sha.outputs.NEW_SHA }}
+
+    steps:
+    
+    - name: Generate a token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+    
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Checkout setup-scripts
+      uses: actions/checkout@v3
+      with:
+        repository: ebetsystems/metro-technical-setup-scripts
+        token: ${{ steps.generate_token.outputs.token }}
+        path: ${{ github.workspace }}\metro-technical-setup-scripts
+        fetch-depth: 1
+    
+    - name: Update Catalog
+      uses: "./.github/template/catalog"
+      with:
+        CleanWorkspace: false
+        AppName: ${{ secrets.APP_NAME }}
+        AppId: ${{ secrets.APP_ID }}
+        Environment: sit
+        NextEnvironment: uat
+        GHAPIToken: ${{ steps.generate_token.outputs.token }}
+        CatalogFile: ${{ env.Catalog }}
+    
+    - name: Define Updated SHA Output
+      id: sha
+      run: |
+        $SHA_NEW=$(git rev-parse HEAD)
+        echo "NEW_SHA=$SHA_NEW" >> $env:GITHUB_OUTPUT
+    
+  UAT-TestsPassed:
+    needs: [ SIT-TestsPassed ]
+    runs-on: windows-2019
+    if: github.ref_name == 'main'
+    outputs:
+        NEW_SHA: ${{ steps.sha.outputs.NEW_SHA }}
+        TestStatus: ${{ steps.TestStatus.outputs.TestStatus }}
+
+    steps:
+
+    - name: Generate a token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+    
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ needs.UAT-Slave1-Deploy.outputs.NEW_SHA }}
+    
+    - name: Checkout setup-scripts
+      uses: actions/checkout@v3
+      with:
+        repository: ebetsystems/metro-technical-setup-scripts
+        token: ${{ steps.generate_token.outputs.token }}
+        path: ${{ github.workspace }}\metro-technical-setup-scripts
+        fetch-depth: 1
+    
+    - name: Update Catalog
+      uses: "./.github/template/catalog"
+      with:
+        CleanWorkspace: true
+        AppName: ${{ secrets.APP_NAME }}
+        AppId: ${{ secrets.APP_ID }}
+        Environment: uat
+        NextEnvironment: staging
+        GHAPIToken: ${{ steps.generate_token.outputs.token }}
+        CatalogFile: ${{ env.Catalog }}
+    
+    - name: Define Updated SHA Output
+      id: sha
+      run: |
+        echo "NEW_SHA=${{env.NEW_SHA}}" >> $env:GITHUB_OUTPUT
+    
+  STAGING-TestsPassed:
+    needs: [ UAT-TestsPassed ]
+    runs-on: windows-2019
+    if: github.ref_name == 'main'
+    outputs:
+        NEW_SHA: ${{ steps.sha.outputs.NEW_SHA }}
+
+    steps:
+
+    - name: Generate a token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+    
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ needs.STAGING-Slave1-Deploy.outputs.NEW_SHA }}
+    
+    - name: Checkout setup-scripts
+      uses: actions/checkout@v3
+      with:
+        repository: ebetsystems/metro-technical-setup-scripts
+        token: ${{ steps.generate_token.outputs.token }}
+        path: ${{ github.workspace }}\metro-technical-setup-scripts
+        fetch-depth: 1
+    
+    - name: Update Catalog
+      uses: "./.github/template/catalog"
+      with:
+        CleanWorkspace: true
+        AppName: ${{ secrets.APP_NAME }}
+        AppId: ${{ secrets.APP_ID }}
+        Environment: staging
+        NextEnvironment: prod
+        GHAPIToken: ${{ steps.generate_token.outputs.token }}
+        CatalogFile: ${{ env.Catalog }}

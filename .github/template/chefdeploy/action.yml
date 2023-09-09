@@ -1,0 +1,127 @@
+name: "Chef Deploy"
+description: "Deploy Chef Configuration"
+
+inputs:
+
+  CleanWorkspace: 
+    description: "Clear workspace directory"
+    required: true
+  
+  AppId: 
+    description: "ID of the GitHub App used to authenticate with the GitHub API"
+    required: true
+  
+  PrivateKey: 
+    description: "Private Key of the GitHub App used to authenticate with the GitHub API"
+    required: true
+
+  GHAPIToken: 
+    description: "GitHub Token used to authenticate to the API"
+    required: true
+
+  Environment: 
+    description: "The Environment you would like to deploy the packages to"
+    required: true
+  
+  ServerType: 
+    description: "The type of server e.g. standalone, master, slave1 or slave2"
+    required: true
+  
+  CatalogFile: 
+    description: "The catalog file to reference for the deployment"
+    required: true
+  
+  MetroRepositoryPath: 
+    description: "Directory path to sync metro files from"
+    required: false
+
+runs:
+  using: "composite"
+
+  steps:
+  
+  - name: Retrieve Environment Build Artifact
+    if: ${{ inputs.ServerType == 'master' || inputs.ServerType == 'standalone' }}
+    shell: pwsh
+    env:
+      GH_TOKEN: ${{inputs.GHAPIToken}}
+      APP_ID: ${{ inputs.AppId }}
+      PRIVATE_KEY: ${{ inputs.PrivateKey }}
+    run: |
+      .\script\Construct-EnvironmentPackage.ps1 -catalogFile ${{ inputs.CatalogFile }} -environment ${{ inputs.Environment }} -finalFolder ".\metropolis-release\${{ inputs.Environment }}"
+  
+  - name: Pre Reporting
+    shell: pwsh
+    run: |
+      New-Item -Path ".\reports" -Type Directory -ErrorAction SilentlyContinue
+      Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object -Property DisplayName, DisplayVersion, Publisher, InstallDate | ConvertTo-Json -Compress |  Out-File -FilePath .\reports\installed-packages-32-pre.json
+      Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object -Property DisplayName, DisplayVersion, Publisher, InstallDate | ConvertTo-Json -Compress |  Out-File -FilePath .\reports\installed-packages-64-pre.json
+  
+  - name: Setup Metro Installer
+    shell: pwsh
+    run: |
+      Copy-Item -Path "${{ github.workspace }}\iac-metro-common\scripts\sync-repository.ps1" -Destination "C:\metro\scripts\sync-repository.ps1" -Force
+      metro.exe runlist add recipe[metropolis::metricbeat]
+  
+  - name: Metro Installer Update
+    shell: pwsh
+    run: |
+      $env:MetroRepositoryType = "GIT"
+      if("${{ inputs.MetroRepositoryPath }}" -ne ''){
+        $env:MetroRepositoryPath = "${{ inputs.MetroRepositoryPath }}"
+      }
+      metro.exe component update
+  
+  - name: Remove Package Version Info if deployment fails
+    if: failure()
+    shell: pwsh
+    run: |
+      Remove-Item "C:\metro\Package-Version-Info.json"
+  
+  - name: Run Metro Version Compare
+    shell: pwsh
+    env:
+      WRAPPER_WORKING_DIR: ${{ github.workspace }}\reports
+    run: |
+      .\script\gocd-versioncompare-runner.ps1
+
+  - name: Post Reporting
+    shell: pwsh
+    run: |
+      Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object -Property DisplayName, DisplayVersion, Publisher, InstallDate | ConvertTo-Json -Compress |  Out-File -FilePath .\reports\installed-packages-32.json
+      Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object -Property DisplayName, DisplayVersion, Publisher, InstallDate | ConvertTo-Json -Compress |  Out-File -FilePath .\reports\installed-packages-64.json
+
+  - name: Additional Reporting
+    shell: pwsh
+    run: |
+      Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Sort-Object -Property DisplayName | Sort-Object -Property DisplayName | Select-Object -Property DisplayName, DisplayVersion, Publisher, InstallDate, InstallLocation | ConvertTo-HTML -Fragment | Out-File -FilePath .\reports\installed-packages-32.html
+      Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Sort-Object -Property DisplayName | Sort-Object -Property DisplayName | Select-Object -Property DisplayName, DisplayVersion, Publisher, InstallDate, InstallLocation | ConvertTo-HTML -Fragment | Out-File -FilePath .\reports\installed-packages-64.html
+
+  - name: Reporting Comparison
+    shell: pwsh
+    run: |
+      $Data1 = (Get-Content -Raw -Path .\reports\installed-packages-32-pre.json | ConvertFrom-Json)
+      $Data2 = (Get-Content -Raw -Path .\reports\installed-packages-32.json | ConvertFrom-Json); Compare-Object -ReferenceObject $Data1 -DifferenceObject $Data2 -Property Name, DisplayVersion -PassThru | Sort-Object -Property DisplayName, InstallDate, DisplayVersion | ConvertTo-Html -Fragment | Out-File .\reports\comparison-32.html
+      $Data1 = (Get-Content -Raw -Path .\reports\installed-packages-64-pre.json | ConvertFrom-Json); $Data2 = (Get-Content -Raw -Path .\reports\installed-packages-64.json | ConvertFrom-Json); Compare-Object -ReferenceObject $Data1 -DifferenceObject $Data2 -Property Name, DisplayVersion -PassThru | Sort-Object -Property DisplayName, InstallDate, DisplayVersion | ConvertTo-Html -Fragment | Out-File .\reports\comparison-64.html
+    
+  - name: Metro Version Reporting
+    shell: pwsh
+    run: |
+      $body = -join('<p>Generated on ', $Env:COMPUTERNAME, ' at ', (Get-Date)); (Get-Content .\reports\MetroVersions.json | ConvertFrom-Json).Items | ConvertTo-Html -Head '<h1>Metro Version Comparer</h1>' -Body $body | Out-File .\reports\MetroVersions.html
+
+  - name: Finalise Reporting
+    shell: pwsh
+    run: |
+        Copy-Item C:\metro\cookbooks\metropolis\attributes\1.system.rb; $source = -join('C:\metro\cookbooks\metropolis\runlist\', $Env:COMPUTERNAME, '.json'); $dest = -join('runlist-', $Env:COMPUTERNAME, '.json'); Copy-Item $source -Destination $dest
+
+  - name: Publish Reporting Artifacts
+    uses: actions/upload-artifact@v3
+    with:
+      name: ${{ inputs.Environment }}-${{ inputs.ServerType }}-reports
+      path: .\reports
+  
+  - name: Clean Workspace
+    shell: pwsh
+    if: ${{ inputs.CleanWorkspace == 'true' }}
+    run: |
+      rm -Recurse ${{ github.workspace }}\* -Force

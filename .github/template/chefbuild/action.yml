@@ -1,0 +1,61 @@
+name: "Chef Build"
+description: "Construct Chef Folder Structure"
+
+inputs:
+
+  CleanWorkspace: 
+    description: "Clear workspace directory"
+    required: true
+
+  ReleaseDraft: 
+    description: "Is the release a draft?"
+    required: true
+
+  PreRelease: 
+    description: "Is the release a pre release"
+    required: true
+  
+  AppId: 
+    description: "ID of the GitHub App used to authenticate with the GitHub API"
+    required: true
+  
+  PrivateKey: 
+    description: "Private Key of the GitHub App used to authenticate with the GitHub API"
+    required: true
+
+  GHAPIToken: 
+    description: "GitHub Token used to authenticate to the API"
+    required: true
+
+  CatalogFile: 
+    description: "The catalog file to reference for the deployment"
+    required: true
+
+  Environment: 
+    description: "The Environment you would like to deploy the packages to"
+    required: true
+
+runs:
+  using: "composite"
+
+  steps:
+  
+  - name: Create Setup File Path
+    shell: pwsh
+    run: |
+      echo ("SetupFilePath=" + "${{ github.workspace }}\setup-files") >> $env:GITHUB_ENV
+  
+  - name: Upload Packages to Release
+    shell: pwsh
+    env:
+      GH_TOKEN: ${{inputs.GHAPIToken}}
+      APP_ID: ${{ inputs.AppId }}
+      PRIVATE_KEY: ${{ inputs.PrivateKey }}
+    run: |
+      .\script\Build-Publisher.ps1 -catalogFile ${{ inputs.CatalogFile }} -environment ${{ inputs.Environment }}
+  
+  - name: Clean Workspace
+    shell: pwsh
+    if: ${{ inputs.CleanWorkspace == 'true' }}
+    run: |
+      rm -Recurse ${{ github.workspace }}\* -Force

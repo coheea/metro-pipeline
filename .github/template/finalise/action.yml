@@ -1,0 +1,40 @@
+name: "Finalise Catalog"
+description: "Updates catalog to only keep prod environment values"
+
+inputs:
+
+  CleanWorkspace: 
+    description: "Clear workspace directory"
+    required: true
+  
+  AppName: 
+    description: "Name of the GitHub App used to authenticate with the GitHub API"
+    required: true
+
+  AppId: 
+    description: "ID of the GitHub App used to authenticate with the GitHub API"
+    required: true
+  
+  GHAPIToken: 
+    description: "GitHub Token used to authenticate to the API"
+    required: true
+  
+  CatalogFile: 
+    description: "The catalog file to reference for the deployment"
+    required: true
+
+runs:
+  using: "composite"
+
+  steps:
+
+  - name: Finalise catalog
+    shell: pwsh
+    run: |
+      .\metro-technical-setup-scripts\common\utility\Finalise-Catalog.ps1 -ParentDirectory ${{ github.workspace }} -AppName ${{inputs.AppName}} -AppId ${{inputs.AppId}} -CatalogFile ${{ inputs.CatalogFile }} -Token ${{inputs.GHAPIToken}}
+  
+  - name: Clean Workspace
+    shell: pwsh
+    if: ${{ inputs.CleanWorkspace == 'true' }}
+    run: |
+      rm -Recurse ${{ github.workspace }}\* -Force

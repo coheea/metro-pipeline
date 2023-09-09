@@ -1,0 +1,52 @@
+name: "Update Catalog"
+description: "Updates specified environment in catalog with another specified environments values"
+
+inputs:
+
+  CleanWorkspace: 
+    description: "Clear workspace directory"
+    required: true
+  
+  AppName: 
+    description: "Name of the GitHub App used to authenticate with the GitHub API"
+    required: true
+
+  AppId: 
+    description: "ID of the GitHub App used to authenticate with the GitHub API"
+    required: true
+  
+  Environment: 
+    description: "The current environment being deployed to"
+    required: true
+
+  NextEnvironment: 
+    description: "Next environment to deploy to after this one"
+    required: false
+  
+  GHAPIToken: 
+    description: "GitHub Token used to authenticate to the API"
+    required: true
+  
+  CatalogFile: 
+    description: "The catalog file to reference for the deployment"
+    required: true
+
+runs:
+  using: "composite"
+
+  steps:
+
+  - name: Update catalog
+    shell: pwsh
+    run: |
+      if("${{ inputs.NextEnvironment }}" -ne ""){
+        .\metro-technical-setup-scripts\common\utility\Update-Catalog.ps1 -ParentDirectory ${{ github.workspace }} -AppName ${{inputs.AppName}} -AppId ${{inputs.AppId}} -Environment ${{inputs.Environment}} -NextEnvironment ${{inputs.NextEnvironment}} -CatalogFile ${{ inputs.CatalogFile }} -Token ${{inputs.GHAPIToken}}
+      } else{
+        .\metro-technical-setup-scripts\common\utility\Update-Catalog.ps1 -ParentDirectory ${{ github.workspace }} -AppName ${{inputs.AppName}} -AppId ${{inputs.AppId}} -Environment ${{inputs.Environment}} -CatalogFile ${{ inputs.CatalogFile }} -Token ${{inputs.GHAPIToken}}
+      }
+  
+  - name: Clean Workspace
+    shell: pwsh
+    if: ${{ inputs.CleanWorkspace == 'true' }}
+    run: |
+      rm -Recurse ${{ github.workspace }}\* -Force

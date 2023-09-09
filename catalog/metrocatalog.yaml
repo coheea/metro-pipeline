@@ -124,12 +124,12 @@ Catalog:
       Environments:
         prod: '\\pwinappn1088\DropBox\Metropolis\System\Main\Draw\Draw_20201222.1'
         dev:
-          tag: main-Draw_20230909.6
-          artifactName: Draw_20230909.6
+          tag: main-Draw_20230909.7
+          artifactName: Draw_20230909.7
           repo: https://github.com/coheea/metro-member
         sit:
-          tag: main-Draw_20230909.6
-          artifactName: Draw_20230909.6
+          tag: main-Draw_20230909.7
+          artifactName: Draw_20230909.7
           repo: https://github.com/coheea/metro-member
         uat:
           tag: main-Draw_20230909.6

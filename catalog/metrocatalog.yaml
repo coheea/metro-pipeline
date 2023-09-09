@@ -41,12 +41,12 @@ Catalog:
       Environments:
         prod: '\\pwinappn1088\DropBox\Metropolis\System\Main\BillReport\BillReport_20201204.1'
         dev:
-          artifactName: BillReport_20230909.1
-          tag: main-BillReport_20230909.1
+          artifactName: BillReport_20230909.2
+          tag: main-BillReport_20230909.2
           repo: https://github.com/coheea/metro-report
         sit:
-          artifactName: BillReport_20230909.1
-          tag: main-BillReport_20230909.1
+          artifactName: BillReport_20230909.2
+          tag: main-BillReport_20230909.2
           repo: https://github.com/coheea/metro-report
       LocationType: GIT
       CopyEntireFolder: false

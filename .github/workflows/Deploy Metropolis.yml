@@ -31,7 +31,7 @@ jobs:
     - name: Checkout setup-scripts
       uses: actions/checkout@v3
       with:
-        repository: ebetsystems/metro-technical-setup-scripts
+        repository: coheea/metro-technical-setup-scripts
         token: ${{ steps.generate_token.outputs.token }}
         path: ${{ github.workspace }}\metro-technical-setup-scripts
         fetch-depth: 1
@@ -78,7 +78,7 @@ jobs:
     - name: Checkout setup-scripts
       uses: actions/checkout@v3
       with:
-        repository: ebetsystems/metro-technical-setup-scripts
+        repository: coheea/metro-technical-setup-scripts
         token: ${{ steps.generate_token.outputs.token }}
         path: ${{ github.workspace }}\metro-technical-setup-scripts
         fetch-depth: 1
@@ -123,7 +123,7 @@ jobs:
     - name: Checkout setup-scripts
       uses: actions/checkout@v3
       with:
-        repository: ebetsystems/metro-technical-setup-scripts
+        repository: coheea/metro-technical-setup-scripts
         token: ${{ steps.generate_token.outputs.token }}
         path: ${{ github.workspace }}\metro-technical-setup-scripts
         fetch-depth: 1

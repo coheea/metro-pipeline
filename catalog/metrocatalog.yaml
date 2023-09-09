@@ -48,6 +48,10 @@ Catalog:
           artifactName: BillReport_20230909.3
           tag: main-BillReport_20230909.3
           repo: https://github.com/coheea/metro-report
+        uat:
+          tag: main-BillReport_20230909.3
+          repo: https://github.com/coheea/metro-report
+          artifactName: BillReport_20230909.3
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
@@ -127,6 +131,10 @@ Catalog:
           tag: main-Draw_20230909.6
           artifactName: Draw_20230909.6
           repo: https://github.com/coheea/metro-member
+        uat:
+          tag: main-Draw_20230909.6
+          repo: https://github.com/coheea/metro-member
+          artifactName: Draw_20230909.6
       LocationType: GIT
       CopyEntireFolder: false
       TargetFolder: setup-files
